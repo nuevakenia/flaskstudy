@@ -1,0 +1,47 @@
+{% extends './base.html'%}
+{% block title %}Login{% endblock%}
+{% block customCSS %}
+<link rel="stylesheet" href="{{url_for("static",filename="css/register.css")}}">
+{% endblock%}
+
+{% block body %}
+
+
+
+    <form class="form-signin" action="/auth/login" method="post">
+        <img class="mb-4" src="{{ url_for("static",filename="img/minilogo.png")}}" alt="" width="72" height="57">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <br/>
+        {% for message in messages %}
+        <div class="alert alert-primary" alert-dismiss="alert" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        
+        <div class="form-floating">
+          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre usuario">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+    
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+      </form>
+
+    
+    
+        
+
+{% endblock %}

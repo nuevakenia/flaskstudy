@@ -1,0 +1,18 @@
+{% extends './base.html'%}
+{% block title %}Inicio{% endblock%}
+{% block body %}
+<a class="btn btn-secondary" href="{{ url_for('logout')}}">Logout</a>
+<h1>Bienvenido {{ current_user.username}} </h1>
+    <h1>{{data.bienvenida}}
+        Total enemigos:
+        {% if data.numero_npc > 1 %}
+        {{data.numero_npc}}
+    </h1>
+    <ul>{% for e in data.enemigos %}
+        <li>{{ e }}</li>
+        {% endfor %}
+    </ul>
+        {% else %}
+        <h2>Hay muy pocos npc disponibles</h2>
+        {% endif %}
+{% endblock %}
